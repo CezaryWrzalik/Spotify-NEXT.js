@@ -15,6 +15,6 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "components/icons/spotify-icon.ts", "components/icons/spotify-icon.ts", "src/components", "custom.d.ts", "pages/api/auth/[...nextauth].js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "components/icons/spotify-icon.ts", "components/icons/spotify-icon.ts", "src/components", "custom.d.ts", "pages/api/auth/[...nextauth].tsx"],
   "exclude": ["node_modules"]
 }

@@ -1,10 +1,9 @@
 declare global {
 	namespace NodeJS {
 		interface ProcessEnv {
-			GITHUB_AUTH_TOKEN: string;
-      NODE_ENV: 'development' | 'production';
-      PORT?: string;
-      PWD: string;
+			JWT_SECRET: string;
+			NEXT_PUBLIC_CLIENT_ID: string;
+			NEXT_PUBLIC_CLIENT_SECRET: string;
     }
   }
 }
