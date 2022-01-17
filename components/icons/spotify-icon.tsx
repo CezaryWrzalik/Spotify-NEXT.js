@@ -1,8 +1,13 @@
-const SpotifyIcon = () => {
+type IconProps = {
+  x: number,
+  y: number;
+}
+
+const SpotifyIcon = (props: IconProps) => {
   return (
     <svg
-      width="70px"
-      height="70px"
+      width={props.x + 'px'}
+      height={props.y + 'px'}
       viewBox="0 0 32 32"
       xmlns="http://www.w3.org/2000/svg"
       fill="green"

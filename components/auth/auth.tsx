@@ -7,10 +7,10 @@ import classes from "./auth.module.css";
 const AuthLayout = () => {
   return (
     <section className={classes.layout}>
-      <header className={classes.header}>        
-         <SpotifyIcon />
+      <div className={classes.header}>        
+         <SpotifyIcon x={70} y={70} />
         <h1>Spotify</h1>
-      </header>
+      </div>
       <div className={classes.login}>
         <div>
           <FormButton

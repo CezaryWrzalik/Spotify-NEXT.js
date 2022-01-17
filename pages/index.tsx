@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 import { useSession } from "next-auth/react";
-import SideBar from "../components/layout/sidebar";
+import HomePage from "../components/home-page/hero";
 
 const Home: NextPage = () => {
   const { data: session, status } = useSession();
@@ -8,7 +8,7 @@ const Home: NextPage = () => {
   console.log(session);
   return (
     <div>
-      <SideBar />
+      <HomePage />
     </div>
   );
 };

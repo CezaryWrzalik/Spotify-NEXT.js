@@ -1,0 +1,69 @@
+.sideBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  flex-basis: 250px;
+  background: black;
+  padding: 20px;
+  overflow: hidden;
+}
+
+.options {
+  width: 100%;
+}
+
+.title,
+.option {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  gap: 10px;
+}
+
+.sideBar svg {
+  fill: var(--light-font);
+}
+
+.option svg {
+  width: 20px;
+  height: 20px;
+}
+
+.options button {
+  width: 100%;
+  border-radius: 5px;
+  color: var(--light-font);
+  cursor: pointer;
+  margin: 0 0 10px 0;
+  font-size: var(--size-4);
+  font-family: var(--main-font);
+  font-weight: var(--medium);
+  height: 40px;
+}
+
+.menu {
+  margin-bottom: 5px;
+  border-bottom: 1px solid var(--color-grey-300);
+}
+
+.sideBar button {
+  height: 30px;
+  border: none;
+  background: inherit;
+}
+
+.option:hover{
+  color: white;
+}
+
+.option:hover svg{
+  fill: white;
+}
+
+.playlist{
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  font-weight: 400;
+}

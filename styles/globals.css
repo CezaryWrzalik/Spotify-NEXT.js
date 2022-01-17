@@ -24,7 +24,7 @@ body {
 
   --size-1: 0.25rem;
   --size-2: 0.5rem;
-  --size-3: 0.75rem;
+  --size-3: 0.9rem;
   --size-4: 1rem;
   --size-5: 1.25rem;
   --size-6: 1.5rem;
@@ -37,11 +37,13 @@ body {
   --size-40: 10rem;
 
   --light: 300;
-  --medium: 600;
+  --medium: 500;
   --bold: 800;
 
-  --light-font: var(--color-grey-200);
-  --dark-font: var(--caolor-grey-800);
+  --light-font: var(--color-grey-100);
+  --dark-font: var(--color-grey-800);
+
+  --main-font: Montserrat;
 
   background: rgb(22, 22, 22);
   /* background: linear-gradient(

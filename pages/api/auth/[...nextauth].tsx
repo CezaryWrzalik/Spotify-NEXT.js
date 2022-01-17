@@ -5,7 +5,7 @@ import { JWT } from "next-auth/jwt";
 
 async function refreshAccessToken(token: JWT) {
   try {
-    spotifyApi.setAccessToken(token.accessToken);
+    spotifyApi.setAccessToken(token.accessToken!);
     spotifyApi.setRefreshToken(token.refreshToken!);
 
     const { body: refreshedToken } = await spotifyApi.refreshAccessToken();
@@ -44,7 +44,7 @@ export default NextAuth({
       if (account && user) {
         return {
           ...token,
-          accesToken: account.access_token,
+          accessToken: account.access_token,
           refreshToken: account.refresh_token,
           username: account.providerAccountId,
           accessTokenExpires: account.expires_at! * 1000,
@@ -61,7 +61,7 @@ export default NextAuth({
     },
 
     async session({ session, token }) {
-      session.user.accesToken = token.accesToken;
+      session.user.accessToken = token.accessToken;
       session.user.refreshToken = token.refreshToken;
       session.user.username = token.username;
 
