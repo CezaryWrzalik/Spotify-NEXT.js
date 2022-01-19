@@ -1,23 +1,22 @@
 import { signOut, useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import useSpotify from "../../hooks/useSpotify";
-import HomeIcon from "../icons/home-icon";
-import LibraryIcon from "../icons/library-icon";
-import LogoutIcon from "../icons/logout-icon";
-import SearchIcon from "../icons/search-icon";
-import SpotifyIcon from "../icons/spotify-icon";
-
 import classes from "./sidebar.module.css";
-
-type playlist = {
-  id: string;
-  name: string;
-};
+import {
+  HomeIcon,
+  LibraryIcon,
+  LogoutIcon,
+  SearchIcon,
+  SpotifyIcon,
+} from "../icons";
+import { useRecoilState } from "recoil";
+import { playlistIdState} from "../../atoms/playlistAtom";
 
 const SideBar = () => {
   const spotifyApi = useSpotify();
-  const [playlists, setPlaylists] = useState<Array<playlist>>([]);
   const { data: session, status } = useSession();
+  const [playlists, setPlaylists] = useState<Array<any>>([]);
+  const [playlistId, setPlaylistId] = useRecoilState(playlistIdState);
 
   useEffect(() => {
     if (spotifyApi.getAccessToken()) {
@@ -49,11 +48,13 @@ const SideBar = () => {
           </button>
         </div>
         {playlists.map((playlist) => (
-          <div id={playlist.id}>
-            <button className={classes.option}>
-              <p className={classes.playlist}>{playlist.name}</p>
-            </button>
-          </div>
+          <button
+            key={playlist.id}
+            className={classes.option}
+            onClick={() => setPlaylistId(playlist.id)}
+          >
+            <p className={classes.playlist}>{playlist.name}</p>
+          </button>
         ))}
       </div>
       <div className={classes.options}>

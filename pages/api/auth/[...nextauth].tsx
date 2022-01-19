@@ -13,8 +13,8 @@ async function refreshAccessToken(token: JWT) {
 
     return {
       ...token,
-      accesToken: refreshedToken.access_token,
-      accesTokenExpires: +Date.now + refreshedToken.expires_in * 1000,
+      accessToken: refreshedToken.access_token,
+      accessTokenExpires: +Date.now + refreshedToken.expires_in * 1000,
       refreshToken: refreshedToken.refresh_token ?? token.refreshToken,
     };
   } catch (error) {

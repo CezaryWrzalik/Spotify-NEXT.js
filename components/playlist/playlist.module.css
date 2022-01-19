@@ -1,0 +1,13 @@
+.content {
+  background-color: rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(15px);
+	position: absolute;
+	width: 100%;
+	top: 330px;
+	min-height: calc(100vh - 353px);
+}
+
+.errorMessage {
+	text-align: center;
+	line-height: 50px;
+}

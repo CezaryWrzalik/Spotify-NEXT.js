@@ -1,0 +1,62 @@
+.player{
+	height: 70px;
+	/* background-color: red; */
+	overflow: hidden;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.songInfo {
+	display: flex;
+	align-items: center;
+	height: 100px;
+	flex-basis: 200px;
+	padding: 10px;
+	gap: 10px;
+
+}
+
+.songInfo img{
+	height: 50px;
+	width: 50px;
+}
+
+.about{
+	display:flex;
+	flex-direction: column;
+	justify-content: center;
+	/* align-items: center; */
+	/* background-color: red; */
+	height: 50px;
+	width: 100%;
+}
+
+.title {
+	height: 20px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	margin: 0;
+	color: white;
+}
+
+.artist{
+	height: 12px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	font-size: 11px;
+	margin: 0;
+}
+
+.volume {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 5px;
+	padding-right: 10px;
+}
+
+.volume svg {
+	height: 15px;
+	fill: var(--color-grey-600)
+}
