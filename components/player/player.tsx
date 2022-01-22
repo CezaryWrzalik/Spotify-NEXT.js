@@ -22,15 +22,29 @@ const Player = () => {
   const fetchCurrentSong = () => {
     if (!songInfo) {
       spotifyApi.getMyCurrentPlayingTrack().then((data) => {
-        console.log("Now playing: ", data.body.item);
         setCurrentTrackId(data?.body?.item!.id);
 
         spotifyApi.getMyCurrentPlaybackState().then((data) => {
           setIsPlaying(data.body?.is_playing);
-          console.log(isPlaying);
-        });
-      });
+        })
+      })
     }
+  };
+
+  const handlePlayStop = () => {
+    spotifyApi.getMyCurrentPlaybackState().then((data) => {
+      try{
+        if (data.body.is_playing) {
+          spotifyApi.pause();
+          setIsPlaying(false);
+        } else {
+          spotifyApi.play();
+          setIsPlaying(true);
+        }
+      } catch (err){
+        console.log(err)
+      }
+    });
   };
 
   useEffect(() => {
@@ -44,11 +58,11 @@ const Player = () => {
     if (volume > 0 && volume < 100) {
       debouncedAdjustVolume(volume);
     }
-  });
+  }, []);
 
   const debouncedAdjustVolume = useCallback(
     debounce((volume) => {
-      spotifyApi.setVolume(volume);
+      spotifyApi.setVolume(volume).catch((err) => {});
     }, 500),
     []
   );
@@ -63,7 +77,7 @@ const Player = () => {
         </div>
       </div>
       <div className={classes.controls}>
-        <Controls />
+        <Controls playPause={handlePlayStop}/>
       </div>
       <div className={classes.volume}>
         <VolumeLowIcon />

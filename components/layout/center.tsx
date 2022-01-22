@@ -6,10 +6,7 @@ import useSpotify from "../../hooks/useSpotify";
 import classes from "./center.module.css";
 import Playlist from "../playlist/playlist";
 import { shuffle } from "lodash";
-
-type State = {
-  playlistId: string;
-};
+import InstructionPage from "../instruction/instruction";
 
 const PlaylistPage = () => {
   const { data: session, status } = useSession();
@@ -18,6 +15,17 @@ const PlaylistPage = () => {
   const [playlist, setPlaylist] = useRecoilState<any>(playlistState);
   const [color, setColor] = useState<string>();
   const [rendered, setRendered] = useState(false);
+
+  const [activeDevices, setActiveDevices] = useState(false);
+
+  useEffect(() => {
+    spotifyApi.getMyDevices().then((data) => {
+      console.log(data);
+      if (data.body.devices.length > 0) {
+        setActiveDevices(true);
+      }
+    });
+  }, [spotifyApi]);
 
   const colors = [
     " rgba(0, 212, 255, 1) 100%",
@@ -34,10 +42,15 @@ const PlaylistPage = () => {
   useEffect(() => {
     spotifyApi.getPlaylist(playlistId).then((data) => {
       setPlaylist(data.body);
-      setRendered(true)
+      setRendered(true);
     });
-    console.log(playlist)
   }, [spotifyApi, playlistId]);
+
+  console.log(activeDevices)
+
+  if (!activeDevices) {
+    return <InstructionPage />;
+  }
 
   if (playlist === undefined)
     return <div className={classes.undefined}>Plalist not found</div>;
@@ -77,7 +90,7 @@ const PlaylistPage = () => {
     );
   }
 
-  return <div>Loading</div>
+  return <div>Loading</div>;
 };
 
 export default PlaylistPage;

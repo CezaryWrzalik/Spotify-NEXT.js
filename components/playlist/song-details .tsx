@@ -9,14 +9,14 @@ const SongDeails = (props: any) => {
   const spotifyApi = useSpotify();
   const [currentTrackId, setCurrentTrackId] =
     useRecoilState(currentTrackIdState);
-  const [isPlaying, setIsPlaying] = useRecoilState(isPlayingState)
+  const [isPlaying, setIsPlaying] = useRecoilState(isPlayingState);
 
   const playSong = () => {
     setCurrentTrackId(track.id);
-    setIsPlaying(true);
     spotifyApi.play({
-      uris: [track.uri]
+      uris: [track.uri],
     });
+    setIsPlaying(true);
   };
 
   return (
